@@ -1,4 +1,8 @@
-# home-iot
+# IoT Home - POC
+
+## Diagrams
+
+- ![Devices and connections](./docs/iot-home-diagram.png)
 
 ## Download repositories
 
