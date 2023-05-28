@@ -2,7 +2,8 @@
 
 ## Diagrams
 
-- ![Devices and connections](./docs/iot-home-diagram.png)
+- ![IoT hardware devices and connections](./docs/iot-hardware.png)
+- ![IoT hardware test devices](./docs/iot-hardware-test.png)
 
 ## Download repositories
 
