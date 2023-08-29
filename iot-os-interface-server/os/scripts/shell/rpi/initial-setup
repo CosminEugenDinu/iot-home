@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#sudo echo "network: {config: disabled}" >> /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+. "${SCRIPT_DIR}/../../.env"
+
+sudo chown pi /etc/netplan/50-cloud-init.yaml
+
+
+# Add default wifi hotspot used by child devices
+conn_name="nm-${DEFAULT_HOTSPOT_DEVICE}-${DEFAULT_HOTSPOT_SSID}"
+"${SCRIPT_DIR}/nmcli-hotspot-con-add.sh" \
+"${DEFAULT_HOTSPOT_DEVICE}" \
+"${conn_name}" \
+"${DEFAULT_HOTSPOT_AUTOCON}" \
+"${DEFAULT_HOTSPOT_SSID}" \
+"${DEFAULT_HOTSPOT_PASS}" \
+"${DEFAULT_HOTSPOT_IP_ADDR}"

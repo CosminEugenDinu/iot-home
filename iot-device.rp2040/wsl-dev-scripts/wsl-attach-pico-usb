@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+# get usbid of attached rpi-pico
+pico_usbid="$("${SCRIPT_DIR}"/get-pico-usbid)"
+
+# mount usbid in wsl
+"${SCRIPT_DIR}"/wsl-usb-attach "${pico_usbid}"
+
+# get device file for attached pico usb
+tty="$(dmesg | grep ttyACM. -o | tail -1)"
+
+printf "${tty}"
+

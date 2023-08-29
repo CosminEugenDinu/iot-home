@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. ~/.nvm/nvm.sh
+nvm use 18
+NODE_ENV=production npm run start:prod

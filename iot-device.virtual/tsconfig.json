@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "importsNotUsedAsValues": "remove",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "incremental": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "skipLibCheck": false,
+    "sourceMap": false
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["**/node_modules/**/*", "**/*.alone/**/*"]
+}

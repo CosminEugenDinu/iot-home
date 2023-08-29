@@ -1,0 +1,7 @@
+#!/bin/bash
+
+usbid="$1"
+
+ttyFileName="$(powershell.exe -NoProfile -NonInteractive -Command usbipd wsl attach --busid "${usbid}")"
+
+printf "${ttyFileName}"

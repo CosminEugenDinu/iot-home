@@ -1,0 +1,53 @@
+#!/bin/bash
+
+source .env
+source .env.local
+
+# load ssh key (used for copy remote files)
+ssh_private_key=${SSH_PRIVATE_KEY_PATH};
+eval "$(ssh-agent)"
+ssh-add "${ssh_private_key}"
+
+export VERSION="$(cat version)"
+
+# build production image
+./scripts.prod/setup-docker-prod
+
+cd scripts.deploy
+
+# publish production image to docker hub
+./deploy-docker
+
+# set allow execution on local and remote files
+chmod +x deploy-docker
+chmod +x remote-files/setup-docker
+chmod +x remote-files/start-server-docker
+chmod +x remote-files/stop-server-docker
+
+# build variables used on remote server
+cat > remote-files/.env.docker.generated <<EOL
+export DOCKER_HUB_USER="${DOCKER_HUB_USER}"
+export DOCKER_IMAGE_NAME="${DOCKER_IMAGE_NAME}"
+export VERSION="${VERSION}"
+EOL
+
+
+# start deploy to remote
+
+remote_host="${REMOTE_SERVER_USER}@${REMOTE_SERVER_HOST}"
+remote_dir="${REMOTE_SERVER_PROJECT_DIR}"
+
+# copy executable files to target remote host
+rsync -a remote-files/ "${remote_host}:${remote_dir}"
+
+remote_cmd="\
+cd ${remote_dir}; \
+./stop-server-docker && \
+./setup-docker && \
+./start-server-docker && \
+docker image ls && \
+docker container ls && \
+free -h"
+
+# execute updated software on remote server
+ssh "${remote_host}" "${remote_cmd}"

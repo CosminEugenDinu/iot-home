@@ -1,0 +1,21 @@
+FROM arm64v8/node:18-alpine
+
+RUN apk add --no-cache bash
+
+WORKDIR /usr/app
+
+COPY ../version ./
+COPY ../.env ./
+COPY ../package*.json ./
+COPY ../dist/ ./dist
+
+RUN npm ci --omit=dev
+
+RUN cat > ./start-server <<EOL
+#!/bin/sh
+NODE_ENV=production npm run start:prod
+EOL
+
+RUN chmod +x ./start-server
+
+ENTRYPOINT ["sleep", "infinity"]

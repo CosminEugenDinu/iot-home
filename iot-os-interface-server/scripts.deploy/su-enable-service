@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+service="os-interface.service"
+
+cat > "/etc/systemd/system/${service}" <<EOL
+[Unit]
+Description=Os-interface service (ws)
+
+[Service]
+ExecStart=${SCRIPT_DIR}/su-start
+ExecStop=${SCRIPT_DIR}/su-stop
+
+[Install]
+WantedBy=multi-user.target
+
+EOL
+
+systemctl enable "${service}" 
+systemctl restart "${service}"
+systemctl status "${service}" --no-pager

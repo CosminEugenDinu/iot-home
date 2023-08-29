@@ -1,0 +1,4 @@
+{
+  "mountPath": "/cmd",
+  "staticFilesRelPath": "./"
+}

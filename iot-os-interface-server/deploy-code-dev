@@ -1,0 +1,43 @@
+#!/bin/bash
+
+source .env
+source .env.local
+
+ssh_private_key=${SSH_PRIVATE_KEY_PATH};
+eval "$(ssh-agent)"
+ssh-add "${ssh_private_key}"
+
+remote_host="${REMOTE_SERVER_USER}@${REMOTE_SERVER_HOST}"
+remote_dir="${REMOTE_SERVER_PROJECT_DIR}"
+remote_files_dir="scripts.deploy/remote-files.generated"
+
+buildProject() {
+  ./setup-dev
+}
+
+setupFilesForRemote() {
+  rm -r "${remote_files_dir}"
+  cp -r -t "${remote_files_dir}" \
+  dist \
+  os \
+  version \
+  .env 
+}
+
+clearRemote() {
+  ssh "${remote_host}" "mkdir -p ${remote_dir} && rm -r ${remote_dir}/dist/* && rm -r ${remote_dir}/os"
+}
+
+copyRemoteFiles() {
+  rsync -a "${remote_files_dir}/" "${remote_host}:${remote_dir}/"
+}
+
+setupRemote() {
+  ssh "${remote_host}" "cd ${remote_dir} && echo \"${SUDO_PASSWORD}\" | sudo -S systemctl restart os-interface.service"
+}
+
+buildProject
+setupFilesForRemote
+clearRemote
+copyRemoteFiles
+setupRemote

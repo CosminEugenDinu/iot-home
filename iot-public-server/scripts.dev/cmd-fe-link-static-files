@@ -1,0 +1,20 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "${SCRIPT_DIR}/../"
+
+proj_root="$(pwd)"
+
+# module
+fe_module_name="cmd-fe.alone"
+fe_module_path="${proj_root}/src/common_modules/cmd-explorer/${fe_module_name}"
+fe_module_static_path="${fe_module_path}/dist/static"
+
+# project
+proj_static_generated_path="${proj_root}/static.generated"
+proj_fe_module_static_path="${proj_static_generated_path}/${fe_module_name}"
+
+# execute
+rm -r "${proj_fe_module_static_path}"
+mkdir -p "${proj_fe_module_static_path}" && \
+ln -s "${fe_module_static_path}" "${proj_fe_module_static_path}"

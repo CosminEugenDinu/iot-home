@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# currently only wsl is supported
+scripts_dir="wsl-dev-scripts"
+
+# get usbid of attached rpi-pico with picoprobe firmware installed
+picoprobe_usbid="$("${scripts_dir}"/get-picoprobe-usbid.js)"
+
+# mount usbid in wsl
+wsl-dev-scripts/wsl-usb-attach "${picoprobe_usbid}"
+
+sleep 1
+# start openocd server (sudo password in .env)
+node "${scripts_dir}/start-openocd.js"
+

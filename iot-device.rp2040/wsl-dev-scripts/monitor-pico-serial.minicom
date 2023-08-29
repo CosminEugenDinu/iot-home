@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# currently on wsl is supported
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
+baud_rate=115200
+tty_filename="$("${SCRIPT_DIR}"/wsl-attach-pico-usb)"
+device_file="/dev/${tty_filename}"
+
+echo "Device file is ${device_file}"
+
+# start serial monitor
+sudo minicom -b "${baud_rate}" -o -D "/dev/${device_file}"

@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  online-server:
+    image: "${DOCKER_HUB_USER}/${DOCKER_IMAGE_NAME}:${VERSION}"
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "1"
+          memory: 50M
+    ports:
+      - 3336:3336
+    entrypoint: ["bash", "-c", "bash start-server"]
+    restart: unless-stopped

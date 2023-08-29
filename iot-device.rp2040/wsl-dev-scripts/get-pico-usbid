@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import json
+import re
+
+cwd = os.path.dirname(os.path.abspath(__file__))
+usblist_script = os.path.join(cwd, "wsl-usb-list-win")
+
+try:
+    result = subprocess.run([usblist_script], capture_output=True)
+except Exception:
+    exit(1)
+
+parsed = json.loads(result.stdout)
+
+devices = parsed["Devices"]
+
+for device in devices:
+    busId = device["BusId"]
+    description = device["Description"]
+    persistedGuid = device["PersistedGuid"]
+
+    if (persistedGuid == "0ac68175-626a-4149-9ac1-087ef857a7de"):
+        print(busId)
+        exit(0)
+
+    isPico = re.search("Reset", description, flags=re.I)
+    if isPico:
+        print(busId)
+        exit(0)

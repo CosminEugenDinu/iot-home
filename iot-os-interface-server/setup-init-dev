@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# install os required packages
+#./os-install
+
+gpg -o .env.local -d .env.local.gpg
+

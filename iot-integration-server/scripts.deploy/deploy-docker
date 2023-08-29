@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source ../.env
+export VERSION="$(cat ../version)"
+
+docker push "${DOCKER_HUB_USER}/${DOCKER_IMAGE_NAME}:${VERSION}"

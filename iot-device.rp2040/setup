@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# <fill in your credentials>
+# cp cmake/credentials.cmake.example cmake/credentials.cmake
+
+# install nodemon & rest - used for watch src and run build.sh and monitor serial
+npm install
+
+./build.sh
+

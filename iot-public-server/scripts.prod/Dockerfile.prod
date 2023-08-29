@@ -1,0 +1,24 @@
+FROM node:18-alpine
+
+RUN apk add --no-cache bash
+
+WORKDIR /usr/app
+
+COPY ../version ./
+COPY ../.env ./
+COPY ../package*.json ./
+COPY ../dist/ ./dist
+COPY ../static.generated/ ./static.generated
+
+RUN npm ci --omit=dev
+
+RUN cat > ./start-server <<EOL
+#!/bin/bash
+NODE_ENV=production npm run start:prod
+EOL
+
+
+RUN chmod +x ./start-server
+
+# just start & we'll run it manually
+ENTRYPOINT ["sleep", "infinity"]

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+source .env
+export VERSION="$(cat version)"
+
+# build docker production image
+./scripts.prod/setup-docker-prod
+
+export DOCKERFILE="./scripts.prod/Dockerfile.prod"
+# run docker production container 
+docker compose up -d
+
+# start container process
+docker exec -d "${DOCKER_CONTAINER_NAME}" ./start-server 

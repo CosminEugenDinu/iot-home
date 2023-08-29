@@ -1,0 +1,4 @@
+#!/bin/bash
+
+chmod +x setup-dev setup-prod
+chmod +x start-dev

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+user="$1"
+file="$2"
+
+sudo chown "${user}" "${file}"

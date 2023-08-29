@@ -1,0 +1,7 @@
+{
+  "cmd": {
+    "mountPath": "/cmd/",
+    "staticFilesRelPath": "./static",
+    "apiMountPath": "/cmd/api"
+  }
+}

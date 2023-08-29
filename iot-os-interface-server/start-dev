@@ -1,0 +1,8 @@
+#!/bin/bash
+
+. ~/.nvm/nvm.sh
+nvm use 18
+
+./scripts.dev/fe-link-static-files
+
+npm run start:dev:watch

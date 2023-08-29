@@ -1,0 +1,30 @@
+{
+  "editor.formatOnSave": true,
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/node_modules": false
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#00776dd8",
+    "activityBar.background": "#00776dd8",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#00776dd8",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#00776dd8",
+    "statusBar.background": "#00776dd8",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#00776dd8",
+    "statusBarItem.remoteBackground": "#00776dd8",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#00776dd8",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#00776dd8",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  }
+}

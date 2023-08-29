@@ -1,0 +1,40 @@
+{
+  "name": "homepage-fe",
+  "version": "0.0.1",
+  "scripts": {
+    "setup": "npm install",
+    "build:prod": "NODE_ENV=production concurrently \"npm run build:ssr:prod\" \"npm run build:web:prod\" && node bundle-ssr.js",
+    "build:dev": "concurrently \"npm run build:ssr:dev\" \"npm run build:web:dev\" && node bundle-ssr.js",
+    "build:ssr:dev": "webpack --config webpack.config.ssr.js --stats-error-details && mkdir -p .generated && node scripts.generated/print-react-app-html.js > .generated/react-app-html",
+    "build:ssr:prod": "NODE_ENV=production webpack --config webpack.config.ssr.js && mkdir -p .generated && node scripts.generated/print-react-app-html.js > .generated/react-app-html",
+    "build:web:prod": "NODE_ENV=production webpack --config webpack.config.web.js",
+    "build:web:dev": "webpack --config webpack.config.web.js --stats-error-details",
+    "start:dev": ". ~/.nvm/nvm.sh;. ~/.profile;nvm use 18 && node dev.js",
+    "clear:all": "rm -rf node_modules && rm -rf dist && rm -rf .generated",
+    "clear:gen": "rm -rf .generated scripts.generated dist/static"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-switch": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.30",
+    "@types/react-dom": "^18.0.11",
+    "clean-webpack-plugin": "^4.0.0",
+    "concurrently": "^8.0.1",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.3",
+    "ejs": "^3.1.9",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "jsdom": "^21.1.1",
+    "mini-css-extract-plugin": "^2.7.5",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.2",
+    "webpack": "^5.76.3",
+    "webpack-cli": "^5.0.1",
+    "webpack-manifest-plugin": "^5.0.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

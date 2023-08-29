@@ -1,0 +1,13 @@
+{
+  "paths": {
+    "pages": {
+      "cmd": "/cmd/",
+      "homepage": "/"
+    },
+    "homepage": {
+      "mountPath": "/",
+      "staticFilesRelPath": "./static",
+      "apiMountPath": "/api/homepage"
+    }
+  }
+}

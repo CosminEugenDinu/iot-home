@@ -1,0 +1,60 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "${SCRIPT_DIR}"
+
+source .env
+source .env.local
+
+export VERSION="$(cat version)"
+
+ssh_private_key=${SSH_PRIVATE_KEY_PATH};
+eval "$(ssh-agent)"
+ssh-add "${ssh_private_key}"
+
+remote_host="${REMOTE_SERVER_USER}@${REMOTE_SERVER_HOST}"
+remote_dir="${REMOTE_SERVER_PROJECT_DIR}"
+remote_files_dir="scripts.deploy/remote-files.generated"
+
+buildProject() {
+  ./setup-prod
+}
+
+setupFilesForRemote() {
+  chmod +x "scripts.deploy/setup"
+  chmod +x "scripts.deploy/su-start"
+  chmod +x "scripts.deploy/su-stop"
+  chmod +x "scripts.deploy/su-enable-service"
+  rm -r "${remote_files_dir}"
+  mkdir -p "${remote_files_dir}"
+  cp -r -t "${remote_files_dir}" \
+  dist \
+  package-lock.json \
+  package.json \
+  os \
+  os-install \
+  scripts.deploy/setup \
+  scripts.deploy/su-start \
+  scripts.deploy/su-stop \
+  scripts.deploy/su-enable-service \
+  version \
+  .env 
+}
+
+clearRemote() {
+  ssh "${remote_host}" "mkdir -p ${remote_dir} && rm -r ${remote_dir}/*"
+}
+
+copyRemoteFiles() {
+  rsync -a "${remote_files_dir}/" "${remote_host}:${remote_dir}/"
+}
+
+setupRemote() {
+  ssh "${remote_host}" "cd ${remote_dir} && ./setup && source .env && echo \"${SUDO_PASSWORD}\" | sudo -S ./su-enable-service"
+}
+
+buildProject
+setupFilesForRemote
+clearRemote 
+copyRemoteFiles
+setupRemote

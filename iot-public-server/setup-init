@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# set allow-execution permissions of executable scripts
+
+chmod +x scripts.dev/*
+chmod +x setup-dev start-dev
+chmod +x start-docker-dev stop-docker-dev
+
+chmod +x scripts.prod/*
+chmod +x setup-prod start-prod
+
+chmod +x scripts.deploy/deploy-docker
+chmod +x scripts.deploy/setup-docker-prod
+chmod +x scripts.deploy/remote-files/setup-docker
+chmod +x scripts.deploy/remote-files/stop-server-docker
+chmod +x scripts.deploy/remote-files/start-server-docker
+chmod +x deploy
+
+chmod +x os-install
+
+# install os required packages
+#./os-install
+

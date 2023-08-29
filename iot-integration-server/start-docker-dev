@@ -1,0 +1,20 @@
+#!/bin/bash
+
+source .env
+export VERSION="$(cat version)"
+export DOCKER_IMAGE_NAME="${DOCKER_IMAGE_NAME}-dev"
+export DOCKER_CONTAINER_NAME="${DOCKER_CONTAINER_NAME}-dev"
+
+# build development version of application
+# ./setup-dev
+
+# copy static files
+./scripts.dev/fe-copy-static-files
+
+
+export DOCKERFILE="./scripts.dev/Dockerfile.dev"
+# build and run docker container 
+docker compose up --build -d
+
+# start container process
+docker exec -d "${DOCKER_CONTAINER_NAME}" ./start-server 

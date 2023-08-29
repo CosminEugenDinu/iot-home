@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source .env
+export VERSION="$(cat version)"
+
+export DOCKERFILE="./scripts.prod/Dockerfile.prod"
+docker compose down 

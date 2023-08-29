@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# setup raspberrypi 
+if [[ "$(hostname)" == "rpi" ]];then
+  # TODO: check Linux distribution also before running install
+  chmod +x ./os/scripts/shell/rpi/initial-setup && ./os/scripts/shell/rpi/initial-setup
+fi
+
+cp .env os/.env

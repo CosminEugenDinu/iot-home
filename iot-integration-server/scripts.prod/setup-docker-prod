@@ -1,0 +1,28 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "${SCRIPT_DIR}/../"
+
+source .env
+export VERSION="$(cat version)"
+
+# build production version of application
+. ~/.nvm/nvm.sh
+nvm use 18
+npm run setup:prod:docker
+
+export DOCKERFILE="./scripts.prod/Dockerfile.prod"
+image="${DOCKER_IMAGE_NAME}:${VERSION}"
+tag_name="${DOCKER_HUB_USER}/${DOCKER_IMAGE_NAME}:${VERSION}"
+
+
+export DOCKER_BUILDKIT=1
+
+# build for arm64
+docker buildx build ./ \
+--platform=linux/arm64/v8 \
+--file="${DOCKERFILE}" \
+--tag="${tag_name}" \
+--load
+
+docker image ls "${tag_name}*"

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "${SCRIPT_DIR}"
+
+source "./homepage-fe.dev.config"
+
+rm -r "${PROJ_FE_MODULE_STATIC_PATH}"
+mkdir -p "${PROJ_FE_MODULE_STATIC_PATH}" && \
+ln -s "${FE_MODULE_STATIC_PATH}" "${PROJ_FE_MODULE_STATIC_PATH}"

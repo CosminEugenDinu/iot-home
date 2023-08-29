@@ -1,0 +1,41 @@
+{
+  "editor.formatOnSave": true,
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/node_modules": false
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#4c00ff",
+    "activityBar.background": "#4c00ff",
+    "activityBar.foreground": "#4c00ff",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#4c00ff",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#4c00ff",
+    "statusBar.background": "#4c00ff",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#4c00ff",
+    "statusBarItem.remoteBackground": "#4c00ff",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#4c00ff",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#4c00ff",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "[javascript]": {
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.formatOnSave": false,
+    // "editor.suggest.insertMode": "replace",
+    "gitlens.codeLens.scopes": ["document"]
+  }
+}

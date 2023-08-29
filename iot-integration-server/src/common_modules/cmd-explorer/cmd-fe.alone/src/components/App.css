@@ -1,0 +1,39 @@
+.cmdInput {
+	background-color: whitesmoke;
+	width: 99%;
+	max-width: 99%;
+	padding-top: 0;
+	padding-bottom: 0;
+	font-family: monospace;
+}
+
+.cmdInputWrapper {
+	background-color: oldlace;
+	position: sticky;
+	top: 5px;
+}
+
+.response {
+	user-select: all;
+}
+
+.code {
+	user-select: text;
+	display: inline;
+}
+
+.fill-width {
+	width: 100%;
+}
+
+.unselectable {
+	user-select: none;
+	-o-user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+}
+
+code {
+	display: block;
+}

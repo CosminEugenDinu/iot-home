@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  online-server:
+    image: "${DOCKER_HUB_USER}/${DOCKER_IMAGE_NAME}:${VERSION}"
+    ports:
+      - 3335:3335
+    entrypoint: ["bash", "-c", "bash start-server"]
+    restart: unless-stopped

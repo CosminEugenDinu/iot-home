@@ -1,0 +1,9 @@
+.env*
+!.env.example
+!.env*.gpg
+node_modules
+dist
+*.tsbuildinfo
+*.hidden
+*.generated
+*.local

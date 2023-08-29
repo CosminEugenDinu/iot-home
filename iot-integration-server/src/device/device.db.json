@@ -1,0 +1,86 @@
+{
+  "VI:RT:UA:LD:EV:CE": {
+    "displayName": "Virtual Device",
+    "controls": {
+      "pins": {
+        "2": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        },
+        "3": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        }
+      }
+    }
+  },
+  "28:cd:c1:04:ef:11": {
+    "displayName": "Picoprobe Device",
+    "controls": {
+      "pins": {
+        "2": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        },
+        "3": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        },
+        "4": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        },
+        "5": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        },
+        "6": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        }
+      }
+    }
+  },
+  "28:cd:c1:04:ef:0e": {
+    "displayName": "Light Bulb Device",
+    "controls": {
+      "pins": {
+        "2": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        },
+        "3": {
+          "modes": {
+            "in": true,
+            "out": true
+          },
+          "outRange": [0, 1]
+        }
+      }
+    }
+  }
+}

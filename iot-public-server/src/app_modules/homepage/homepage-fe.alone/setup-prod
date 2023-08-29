@@ -1,0 +1,8 @@
+#!/bin/bash
+
+. ~/.nvm/nvm.sh
+nvm use 18
+
+npm run clear:all
+npm install
+npm run build:prod

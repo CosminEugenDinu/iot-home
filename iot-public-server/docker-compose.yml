@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  node-server:
+    build:
+      context: ./
+      dockerfile: "${DOCKERFILE}"
+    image: "${DOCKER_IMAGE_NAME}:${VERSION}"
+    container_name: "${DOCKER_CONTAINER_NAME}"
+    restart: unless-stopped
+    ports:
+      - 3336:3336

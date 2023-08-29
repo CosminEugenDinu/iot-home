@@ -1,0 +1,24 @@
+{
+  "type": "module",
+  "scripts": {
+    "watch:build": "nodemon"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-pty": "^0.10.1",
+    "nodemon": "^2.0.21",
+    "serialport": "^10.5.0"
+  },
+  "nodemonConfig": {
+    "verbose": true,
+    "watch": [
+      "src",
+      "package.json"
+    ],
+    "ext": "*",
+    "ignore": [
+      "src/*fsdata.c"
+    ],
+    "exec": "./build.sh"
+  }
+}

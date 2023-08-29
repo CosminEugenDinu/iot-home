@@ -1,0 +1,12 @@
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "${SCRIPT_DIR}"
+
+source "./homepage-fe.prod.config"
+fe_module_build_script="./setup-prod"
+
+rm -r "${PROJ_FE_MODULE_STATIC_PATH}"
+cd "${FE_MODULE_PATH}" && ./setup-init && "./${fe_module_build_script}" && cd - && \
+mkdir -p "${PROJ_FE_MODULE_STATIC_PATH}" && \
+cp -r "${FE_MODULE_STATIC_PATH}" "${PROJ_FE_MODULE_STATIC_PATH}"

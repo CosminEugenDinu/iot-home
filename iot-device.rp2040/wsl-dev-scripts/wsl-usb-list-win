@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+# json output of type {Devices: Array<{BusId: number; Description: string}>}
+json="$(powershell.exe -NoProfile -NonInteractive -Command usbipd state)"
+
+echo "${json}"

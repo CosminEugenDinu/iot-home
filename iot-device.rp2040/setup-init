@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source .env
+
+export PICO_WIFI_SSID="${PICO_WIFI_SSID}"
+export PICO_WIFI_PASS="${PICO_WIFI_PASS}"

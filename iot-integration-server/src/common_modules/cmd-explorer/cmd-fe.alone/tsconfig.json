@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable"],
+    "target": "ES5",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["./src"]
+}
